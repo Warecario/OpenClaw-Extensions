@@ -1,4 +1,6 @@
-# OpenClaw Discird Bit Extensions
+# OpenClaw Discord Bot Extensions
+
+.octweak (custom)
 
 These only work with a OpenClaw bot.
 
