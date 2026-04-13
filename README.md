@@ -8,4 +8,4 @@ Tell your bot to install like this: "Look through the file at this link: (file l
 
 .octweak was used before I switched. It can still be used with the bots, it's just an extension for a txt file.
 
-To update files automatically, inport CarioUpdater and use "!update" as an Owner/Primary, and select what to update.
+To update files without going into repo, import CarioUpdater and use "!update" as an Owner/Primary, and select what to update.
