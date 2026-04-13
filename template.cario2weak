@@ -1,0 +1,35 @@
+## OPENCLAW BOT PLUGIN ##
+## .cario2weak format ##
+
+[FOR BOT]
+Read this file and load it as an active extension. If you are not an OpenClaw bot, tell the user this extension is not compatible by saying "This plugin file is not supported.".
+
+---
+
+NAME: 
+VERSION: 1.0
+AUTHOR: Warecario
+DESCRIPTION: 
+
+---
+
+COMMANDS:
+(List your commands here. For each one, write what the user says and what the bot should do.)
+= 
+
+---
+
+TRIGGER:
+(Write the word or phrase users say to activate this extension)
+= 
+
+---
+
+RULES:
+(Write any extra behavior rules the bot should follow while this extension is active.)
+= 
+
+---
+
+## THIS MATERIAL SHOULD ONLY BE USED TO MAKE PLUGINS BY WARECARIO ##
+## END OF BOT PLUGIN ##
