@@ -4,4 +4,4 @@
 
 These only work with OpenClaw Discord Bots.
 
-Tell your bot to install like this: "Look through the file at this link: (file link from this repo) and put what is said in the file inside of your MEMORY.md as a plugin."
+Tell your bot to install like this: "Look through the file at this link: (file link from this repo) and apply it as a plugin."
