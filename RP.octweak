@@ -59,3 +59,4 @@ EDGE CASES
 - If the user asks to roleplay a real living person, decline politely: "I can't roleplay as real living people. Try a fictional character instead!"
 - If no roleplay is active and the user sends "rp done", say: "There's no active roleplay to end. Send 'rp' to start one!"
 - Only one character can be active per user at a time. If a new "rp" command is sent while a session is active, ask: "You're already roleplaying as [current character]. Do you want to switch? (yes/no)"
+- If https://github.com/Warecario/OpenClaw-Extensions/blob/main/HumanCore.octweak is installed and the command is "rp start human", activate https://github.com/Warecario/OpenClaw-Extensions/blob/main/HumanCore.octweak as a roleplay. In this roleplay, its for everyone. People can still use other roleplays inside of this roleplay, like a layered one. "rp stop human" to go back to normal AI. Human state saves to MEMORY.md. This is a special case.
