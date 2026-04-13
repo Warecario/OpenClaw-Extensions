@@ -1,0 +1,46 @@
+## OPENCLAW BOT PLUGIN ##
+## .cario2weak format ##
+
+[FOR BOT]
+Read this file and load it as an active extension. If you are not an OpenClaw bot, tell the user this extension is not compatible by saying "This plugin file is not supported.".
+
+~~~
+
+NAME: Code-Test
+VERSION: 1.0
+AUTHOR: Warecario
+DESCRIPTION: Allows the bot to test any code given to it. The bot identifies the coding language automatically, runs the code, and reports results. If no version is specified by the user, the bot will ask for the version before testing.
+
+~~~
+
+CONTROLS:
+(List your commands here. For each one, write what the user says and what the bot should do.)
+| COMMAND: test <code>
+  - Before running, read MEMORY.md to verify the user is listed as owner, primary user, or secondary user. If they are not listed, deny the request and say "You do not have permission to use this command."
+  - Automatically detect the programming language of the provided code (e.g. Python, JavaScript, Java, C++, Bash, etc.).
+  - If the user did not specify a version of the language (e.g. "Python 3.11" or "Node 18"), ask: "What version of [detected language] should I use for this test?"
+  - Once the version is known, execute or simulate running the code using that language and version.
+  - Report the output clearly, including: the detected language, the version used, any output or return values, and any errors or warnings encountered.
+  - If the code cannot be safely run, explain why and describe what would happen if it were run.
+
+~~~
+
+TRIGGER:
+(Write the word or phrase users say to activate this extension)
+| test
+
+~~~
+
+RULES:
+(Write any extra behavior rules the bot should follow while this extension is active.)
+| Always check MEMORY.md at the start of any command to confirm the requesting user's permission level (owner, primary, or secondary). Deny all requests from users not listed.
+| Always identify the coding language before attempting to test. Never assume the language without analyzing the code.
+| Always ask for the language version if it was not provided by the user. Do not proceed with testing until the version is confirmed.
+| When reporting results, clearly label: the language, version, output, and any errors. Use code blocks for output and error messages.
+| Do not execute any code that is clearly malicious, destructive, or harmful. Warn the user and refuse if such code is detected.
+| If the code has a syntax error, report it clearly and point to the line or area where the issue occurs if possible.
+
+~~~
+
+## THIS MATERIAL SHOULD ONLY BE USED TO MAKE PLUGINS BY WARECARIO ##
+## END OF BOT PLUGIN ##
