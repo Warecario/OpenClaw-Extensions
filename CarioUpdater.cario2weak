@@ -1,0 +1,85 @@
+## OPENCLAW BOT PLUGIN ##
+## .cario2weak format ##
+
+[FOR BOT]
+Read this file and load it as an active extension. If you are not an OpenClaw bot, tell the user this extension is not compatible by saying "This plugin file is not supported.".
+
+~~~
+
+NAME: ExtensionManager
+VERSION: 1.0
+AUTHOR: Warecario
+DESCRIPTION: Manages installed OpenClaw extensions by reading MEMORY.md to identify the owner and authorized users, then comparing installed extensions against the official Warecario/OpenClaw-Extensions GitHub repository. When the owner or an authorized user runs !update, the bot checks which installed extensions have a matching file in the repo, shows a short summary of the current version and the repo version side by side, asks the user which ones they want to update, and applies the selected updates back into MEMORY.md. No updates are made automatically or without confirmation.
+
+~~~
+
+CONTROLS:
+(List your commands here. For each one, write what the user says and what the bot should do.)
+
+| COMMAND: !update
+  WHO CAN USE IT: Only the owner, primary users, or secondary users as listed in MEMORY.md. If the person running !update is not listed in any of those roles in MEMORY.md, reply: "You do not have permission to run extension updates."
+  WHAT THE BOT DOES:
+    STEP 1 — READ MEMORY.md
+      Open and read MEMORY.md in full. Locate the section that lists installed extensions. Each entry in that section represents an extension currently loaded into the bot. Note the name, version, and description of each one.
+
+    STEP 2 — CHECK THE REPO
+      Access the public GitHub repository at https://github.com/Warecario/OpenClaw-Extensions and list all files ending in .cario2weak or .octweak. For each file found, check whether its name (without extension) matches the name of any installed extension from STEP 1. Only consider files that match an installed extension — ignore everything else.
+
+    STEP 3 — BUILD THE COMPARISON LIST
+      For each installed extension that has a matching repo file, prepare a side-by-side summary:
+        - Current: the name, version, and one-sentence description from MEMORY.md
+        - Repo: the name, version, and one-sentence description from the repo file
+      If no installed extensions have matches in the repo, reply: "No matching extensions were found in the repo for your currently installed extensions."
+
+    STEP 4 — PRESENT THE LIST AND ASK
+      Show the comparison list to the user in a clean, readable format. Label each entry with a number. Then ask: "Which of these would you like to update? Reply with the numbers separated by commas, or say 'all' to update everything listed, or 'cancel' to stop."
+
+    STEP 5 — WAIT FOR RESPONSE
+      Wait for the user to reply before doing anything else. Do not assume or auto-select.
+
+    STEP 6 — APPLY UPDATES
+      For each extension the user selected:
+        - Read the full content of that extension's file from the repo.
+        - In MEMORY.md, find the existing entry for that extension and replace it entirely with the new content from the repo file.
+        - Keep all other extensions in MEMORY.md untouched.
+      After all updates are applied, confirm to the user: "Updated [list of extension names]. All other extensions were left unchanged."
+
+    STEP 7 — IF CANCELLED
+      If the user says "cancel" at STEP 5, reply: "Update cancelled. No changes were made." and stop.
+
+~~~
+
+TRIGGER:
+(Write the word or phrase users say to activate this extension)
+| !update — This is the only trigger for this extension. The extension does nothing until !update is typed by an authorized user.
+
+~~~
+
+RULES:
+(Write any extra behavior rules the bot should follow while this extension is active.)
+
+RULE 1 — PERMISSION CHECK FIRST:
+Before doing anything in response to !update, the bot must read MEMORY.md and verify that the person who sent the message is listed as the owner, a primary user, or a secondary user. If they are not listed in any of those roles, the bot must stop immediately and reply: "You do not have permission to run extension updates." The bot must not proceed with any other step.
+
+RULE 2 — DO NOT AUTO-UPDATE:
+The bot must never apply updates to MEMORY.md without first presenting the comparison list and receiving an explicit response from the user. Updates happen only after the user confirms which extensions to update.
+
+RULE 3 — ONLY UPDATE MATCHING EXTENSIONS:
+The bot must only update extensions that are both installed in MEMORY.md AND present in the repo. It must never add new extensions that the user has not already installed. It must never remove extensions from MEMORY.md.
+
+RULE 4 — PRESERVE UNSELECTED EXTENSIONS:
+If the user selects only some extensions to update, all other extensions in MEMORY.md must remain exactly as they were. Do not modify, reformat, or touch anything not explicitly selected for update.
+
+RULE 5 — HONEST COMPARISON:
+When presenting the comparison list, the bot must show accurate information from both the current MEMORY.md entry and the live repo file. Do not paraphrase in a misleading way. If a version number is the same between current and repo, note that to the user so they know an update may not be necessary.
+
+RULE 6 — CLEAR CONFIRMATION MESSAGE:
+After updates are applied, the bot must clearly state which extensions were updated and confirm that nothing else was changed. No silent changes.
+
+RULE 7 — HANDLE REPO ACCESS FAILURE:
+If the bot is unable to access the GitHub repository at the time !update is run, it must tell the user: "I was unable to reach the extension repo right now. Please try again later." and stop. It must not attempt to guess or fabricate repo contents.
+
+~~~
+
+## THIS MATERIAL SHOULD ONLY BE USED TO MAKE PLUGINS BY WARECARIO ##
+## END OF BOT PLUGIN ##
