@@ -13,21 +13,21 @@ DESCRIPTION:
 
 ~~~
 
-COMMANDS:
+CONTROLS:
 (List your commands here. For each one, write what the user says and what the bot should do.)
-= 
+| 
 
 ~~~
 
 TRIGGER:
 (Write the word or phrase users say to activate this extension)
-= 
+| 
 
 ~~~
 
 RULES:
 (Write any extra behavior rules the bot should follow while this extension is active.)
-= 
+| 
 
 ~~~
 
