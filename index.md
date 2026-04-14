@@ -44,10 +44,9 @@ layout: default
         <p>ARR</p>
         <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
         <ol>
-            <li>These files can be used by everybody. But only Warecario may make, distribute, or sell these projects. The Template file is only by for Warecario's use. Anything against this is strictly prohibited.</li>
-            <li>.cario2weak is not copyrighted, as it's a file extension. My only ask is you use it for plugin making, but dont use my Template for it.</li>
+            <p>These files can be used by everybody. But only Warecario may make, distribute, or sell these projects. The Template file is only by for Warecario's use. Anything against this is strictly prohibited.</p>
+            <p>.cario2weak is not copyrighted, as it's a file extension. My only ask is you use it for plugin making, but dont use my Template for it.</p>
         </ol>
-        <pre id="license-text" style="white-space: pre-wrap; font-family: 'Consolas', monospace; font-size: 13px;">Loading license file...</pre>
     </div>
 </div>
 
