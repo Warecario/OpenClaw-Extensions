@@ -1,0 +1,58 @@
+---
+---
+@import "{{ site.theme }}";
+
+/* Base Body Colors */
+body {
+  background-color: #1e1e1e !important;
+  color: #cccccc !important;
+  font-family: "Segoe UI", Arial, sans-serif !important;
+}
+
+/* Header and Content Backgrounds */
+#header_wrap {
+  background-color: #1e1e1e !important;
+  border-bottom: 3px solid #007acc !important;
+}
+
+#main_content_wrap {
+  background-color: #252526 !important;
+  border: 1px solid #2a2d2e !important;
+}
+
+/* Links and Accents */
+a {
+  color: #007acc !important;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #cccccc !important;
+  text-decoration: underline;
+}
+
+/* Green Buttons */
+.btn {
+  background-color: #16825d !important;
+  color: #ffffff !important;
+  border: none !important;
+  background-image: none !important;
+  font-weight: bold;
+  box-shadow: none !important;
+}
+
+.btn:hover {
+  background-color: #1a9c6f !important;
+  color: #ffffff !important;
+}
+
+/* Secondary Text Elements like blockquotes or small text */
+h1, h2, h3, h4, h5, h6 {
+  color: #cccccc !important;
+}
+
+blockquote, code, pre {
+  background-color: #1e1e1e !important;
+  color: #858585 !important;
+  border-color: #007acc !important;
+}
