@@ -1,9 +1,9 @@
-<RP CORE FOR "RP.octweak">
+<RP CORE FOR "RP.cario2weak">
 ## OPENCLAW BOT PLUGIN ##
 ## .cario2weak format ##
 
 [FOR BOT]
-Read this file and load it as an active extension. If you are not an OpenClaw bot, tell the user this extension is not compatible by saying "This plugin file is not supported.". This plugin requires RP.octweak to be installed. If it is not, deny this plugin and tell the user.
+Read this file and load it as an active extension. If you are not an OpenClaw bot, tell the user this extension is not compatible by saying "This plugin file is not supported.". This plugin requires RP.cario2weak to be installed. If it is not, deny this plugin and tell the user.
 
 ~~~
 NAME: HumanCore
@@ -66,4 +66,4 @@ Only save what would actually be useful to remember later. Don't log every detai
 
 ## THIS MATERIAL SHOULD ONLY BE USED TO MAKE PLUGINS BY WARECARIO ##
 ## END OF BOT PLUGIN ##
-<RP CORE FOR "RP.octweak">
+<RP CORE FOR "RP.cario2weak">
