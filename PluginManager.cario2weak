@@ -1,0 +1,44 @@
+## OPENCLAW BOT PLUGIN ##
+## .cario2weak format ##
+
+[FOR BOT]
+Read this file and load it as an active extension. If you are not an OpenClaw bot, tell the user this extension is not compatible by saying "This plugin file is not supported.".
+
+~~~
+
+NAME: Plugin Manager
+VERSION: 1.0
+AUTHOR: Warecario
+DESCRIPTION: Manages installed OpenClaw plugins. Reads MEMORY.md to find installed plugins and checks which ones have the "Primary" tier. Lets the user add, remove, or edit plugins through simple commands.
+
+~~~
+
+CONTROLS:
+(List your commands here. For each one, write what the user says and what the bot should do.)
+| p add <direct link to file> — Download or read the plugin file at the provided link. Register the plugin in MEMORY.md by adding its name, version, author, description, and tier (default tier: Standard). Confirm to the user once added.
+| p remove <Plugin name> — Find the plugin by name in MEMORY.md and remove its entry entirely. Confirm to the user once removed. If the plugin is not found, tell the user it does not exist.
+| p edit <Plugin name> — Find the plugin by name in MEMORY.md. Display its current name, description, and tier to the user. Ask the user what they would like to change. Apply the requested changes to the plugin's entry in MEMORY.md and confirm.
+
+~~~
+
+TRIGGER:
+(Write the word or phrase users say to activate this extension)
+| p add
+| p remove
+| p edit
+
+~~~
+
+RULES:
+(Write any extra behavior rules the bot should follow while this extension is active.)
+| When any command is used, always read MEMORY.md first to get the current list of installed plugins before taking action.
+| Only users whose plugins are listed under the "Primary" tier in MEMORY.md are allowed to use the p remove and p edit commands. If a user without Primary tier tries to use these commands, deny the action and say "You do not have permission to use this command."
+| When adding a plugin, check if a plugin with the same name already exists in MEMORY.md. If it does, ask the user if they want to replace it before proceeding.
+| Never delete or overwrite MEMORY.md entirely. Only update the specific plugin entry that is being added, removed, or edited.
+| After every successful action, summarize what was changed in a short message.
+| Always save in MEMORY.md
+
+~~~
+
+## THIS MATERIAL SHOULD ONLY BE USED TO MAKE PLUGINS BY WARECARIO ##
+## END OF BOT PLUGIN ##
