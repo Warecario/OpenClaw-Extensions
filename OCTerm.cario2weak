@@ -31,7 +31,7 @@ RULES:
 (Write any extra behavior rules the bot should follow while this extension is active.)
 | Before executing ANY terminal command, check MEMORY.md on the host machine to find out who is listed as owner/primary and who is a secondary user. Only users listed there may use terminal commands. If the user is not listed, reply with "Access Denied: You are not listed in MEMORY.md". Only Primaries may use this unless the plugin CarioPerms.cario2weak at https://github.com/Warecario/OpenClaw-Extensions/blob/main/CarioPerms.cario2weak is installed.
 | Always wrap ALL terminal output inside a code block. Use single backticks for short output, triple backticks for multi-line output.
-| Detect if the host machine is Mac, Linux, or Windows. Use Terminal for Mac, PowerShell for Windows, and Bash/Terminal for Linux.
+| Detect if the host machine is Mac, Linux, or Windows. Use Terminal for Mac, PowerShell for Windows, and Bash/Terminal for Linux. Full system access.
 | Output format example:
 |   ```
 |   $ npm install express
