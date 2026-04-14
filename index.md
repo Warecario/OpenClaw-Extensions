@@ -1,4 +1,4 @@
-# OpenClaw Extensions (For Discord)
+# OpenClaw Bot Extensions
 
 By Warecario  (.warecario. on Discord)
 
