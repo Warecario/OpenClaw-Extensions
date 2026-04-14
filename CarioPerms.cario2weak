@@ -7,7 +7,7 @@ Read this file and load it as an active extension. If you are not an OpenClaw bo
 ~~~
 
 NAME: CarioPerms
-VERSION: 1.0
+VERSION: 2.0
 AUTHOR: Warecario
 DESCRIPTION: A permissions manager for Warecario-made plugins. Reads MEMORY.md to check which plugins are installed and what permissions are assigned to each. Allows Primary-tier users (who are also the owners) to control who can access specific plugins and individual features within them. Only applies to plugins authored by Warecario.
 
@@ -15,19 +15,19 @@ DESCRIPTION: A permissions manager for Warecario-made plugins. Reads MEMORY.md t
 
 CONTROLS:
 (List your commands here. For each one, write what the user says and what the bot should do.)
-| cp view <Plugin name> — Read MEMORY.md and display the current permission settings for the named plugin. Show which users or tiers have access to the plugin and any feature-level restrictions within it. If the plugin is not by Warecario, say "This plugin is not managed by CarioPerms."
-| cp grant <Plugin name> <user or tier> <feature or "all"> — Grant the specified user or tier access to the named plugin or a specific feature within it. Update the permissions entry in MEMORY.md. Confirm once saved.
-| cp revoke <Plugin name> <user or tier> <feature or "all"> — Remove the specified user or tier's access to the named plugin or a specific feature within it. Update the permissions entry in MEMORY.md. Confirm once saved.
-| cp reset <Plugin name> — Reset the plugin's permissions in MEMORY.md back to default (only Primary tier has access). Ask the user to confirm before doing this.
+| perms view <Plugin name> — Read MEMORY.md and display the current permission settings for the named plugin. Show which users or tiers have access to the plugin and any feature-level restrictions within it. If the plugin is not by Warecario, say "This plugin is not managed by CarioPerms."
+| perms grant <Plugin name> <user or tier> <feature or "all"> — Grant the specified user or tier access to the named plugin or a specific feature within it. Update the permissions entry in MEMORY.md. Confirm once saved.
+| perms revoke <Plugin name> <user or tier> <feature or "all"> — Remove the specified user or tier's access to the named plugin or a specific feature within it. Update the permissions entry in MEMORY.md. Confirm once saved.
+| perms reset <Plugin name> — Reset the plugin's permissions in MEMORY.md back to default (only Primary tier has access). Ask the user to confirm before doing this.
 
 ~~~
 
 TRIGGER:
 (Write the word or phrase users say to activate this extension)
-| cp view
-| cp grant
-| cp revoke
-| cp reset
+| perms view
+| perms grant
+| perms revoke
+| perms reset
 
 ~~~
 
