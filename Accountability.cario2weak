@@ -90,6 +90,9 @@ It does not repeat this declaration on every message — only when a new adjustm
 RULE 13 — ADJUSTMENT PERSISTENCE:
 Behavioral adjustments made under Rule 11 persist for the remainder of the session. They cannot be undone by the user asking the bot to ignore them or by the bot forgetting them. If the bot reverts to a behavior it already adjusted away from, that reversion is itself a new contradiction and must be logged.
 
+RULE 14 — LOG:
+Output all logs to a file in workspace called "Accountability.txt"
+
 ~~~
 
 ## THIS MATERIAL SHOULD ONLY BE USED TO MAKE PLUGINS BY WARECARIO ##
