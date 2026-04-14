@@ -4,7 +4,7 @@ layout: default
 
 <div id="nav-container">
     <button class="nav-tab active" onclick="showTab('home')">Home</button>
-    <button class="nav-tab" onclick="showTab('extensions') Bryan">Extensions</button>
+    <button class="nav-tab" onclick="showTab('extensions')">Extensions</button>
     <button class="nav-tab" onclick="showTab('license')">License</button>
 </div>
 
@@ -41,16 +41,19 @@ layout: default
 
 <div id="license-view" class="view">
     <div class="card">
-        <pre id="license-text">Loading license...</pre>
+        <h3>License</h3>
+        <pre id="license-text" style="white-space: pre-wrap; color: #cccccc; font-family: 'Segoe UI', sans-serif;">Loading license...</pre>
     </div>
 </div>
 
 <script>
 let allExtensions = [];
+// IMPORTANT: Change 'Warecario' to your actual GitHub username if different
+const repoPath = 'Warecario/OpenClaw-Extensions'; 
 
 async function loadData() {
     try {
-        const response = await fetch('https://api.github.com/repos/Warecario/OpenClaw-Extensions/contents');
+        const response = await fetch(`https://api.github.com/repos/${repoPath}/contents`);
         const files = await response.json();
         
         allExtensions = files.filter(f => f.name.endsWith('.cario2weak') || f.name.endsWith('.octweak'))
@@ -58,18 +61,33 @@ async function loadData() {
 
         renderList(allExtensions);
 
-        const licRes = await fetch('https://raw.githubusercontent.com/Warecario/OpenClaw-Extensions/main/License');
-        document.getElementById('license-text').innerText = await licRes.text();
+        const licRes = await fetch(`https://raw.githubusercontent.com/${repoPath}/main/License`);
+        if(licRes.ok) {
+            document.getElementById('license-text').innerText = await licRes.text();
+        } else {
+            document.getElementById('license-text').innerText = "License file not found in repository.";
+        }
     } catch (e) {
-        console.error("Failed to load:", e);
+        document.getElementById('extension-list').innerHTML = "<p style='padding:10px; color:red;'>Error loading extensions. Check repo name.</p>";
     }
+}
+
+function formatName(filename) {
+    return filename.replace('.cario2weak', '').replace('.octweak', '')
+                   .replace(/-/g, ' ').replace(/_/g, ' ')
+                   .replace(/RP/g, 'Roleplay').replace(/GB/g, 'GreenBrew')
+                   .replace(/OC/g, 'OpenClaw').replace(/Term/g, 'Terminal')
+                   .toUpperCase();
 }
 
 function renderList(list) {
     const container = document.getElementById('extension-list');
+    if (list.length === 0) {
+        container.innerHTML = "<p style='padding:10px; color:#858585;'>No extensions found.</p>";
+        return;
+    }
     container.innerHTML = list.map(ext => {
-        const displayName = ext.name.replace('.cario2weak', '').replace(/-/g, ' ').toUpperCase();
-        return `<button class="ext-item" onclick="selectExtension('${ext.name}', '${ext.download_url}')">${displayName}</button>`;
+        return `<button class="ext-item" onclick="selectExtension('${ext.name}', '${ext.download_url}')">${formatName(ext.name)}</button>`;
     }).join('');
 }
 
@@ -81,14 +99,10 @@ function filterExtensions() {
 
 async function selectExtension(name, url) {
     const panel = document.getElementById('details-panel');
-    const displayName = name.replace('.cario2weak', '').replace(/-/g, ' ').toUpperCase();
-    
     panel.innerHTML = `
-        <h2>${displayName}</h2>
-        <p style="color:#858585">Source: ${name}</p>
-        <div class="actions">
-            <button class="copy-btn" onclick="copyPrompt('${url}', this)">Copy Install Prompt</button>
-        </div>
+        <h2>${formatName(name)}</h2>
+        <p style="color:#858585; margin-bottom: 20px;">Source: ${name}</p>
+        <button class="copy-btn" onclick="copyPrompt('${url}', this)">Copy Install Prompt</button>
     `;
 }
 
