@@ -42,6 +42,7 @@ layout: default
 <div id="license-view" class="view">
     <div class="card">
         <h3>License</h3>
+        <hr>
         <pre id="license-text" style="white-space: pre-wrap; color: #cccccc; font-family: 'Segoe UI', sans-serif;">Loading license...</pre>
     </div>
 </div>
