@@ -2,22 +2,17 @@
 ---
 @import "{{ site.theme }}";
 
-/* Force Dark Mode Colors */
+/* Base Visibility & Theme Overrides */
 body { 
     background-color: #1e1e1e !important; 
     color: #e1e1e1 !important; 
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important; 
 }
-
 #header_wrap { background-color: #1e1e1e !important; border-bottom: 3px solid #007acc !important; }
 #main_content_wrap { background-color: #1e1e1e !important; }
 
-/* Fix Visibility for Headers and Paragraphs */
-h1, h2, h3, h4, p, li, pre { 
-    color: #e1e1e1 !important; 
-}
+h1, h2, h3, h4, p, li, pre { color: #e1e1e1 !important; }
 
-/* Tabs */
+/* Navigation */
 #nav-container { margin-bottom: 20px; border-bottom: 1px solid #333; display: flex; }
 .nav-tab { background: none; border: none; color: #858585; padding: 10px 20px; cursor: pointer; font-size: 16px; font-weight: bold; }
 .nav-tab.active { color: #007acc; border-bottom: 2px solid #007acc; }
@@ -25,17 +20,9 @@ h1, h2, h3, h4, p, li, pre {
 .view { display: none; }
 .view.active { display: block; }
 
-/* The Cards */
-.card { 
-    background: #252526; 
-    padding: 25px; 
-    border-radius: 6px; 
-    border: 1px solid #333; 
-    line-height: 1.6;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
+/* Components */
+.card { background: #252526; padding: 25px; border-radius: 6px; border: 1px solid #333; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
-/* Extensions App Layout */
 .app-container { display: flex; height: 550px; gap: 15px; }
 .sidebar { width: 300px; background: #252526; border: 1px solid #333; display: flex; flex-direction: column; border-radius: 6px; }
 #search-bar { background: #1e1e1e; border: 1px solid #333; color: #fff; padding: 12px; margin: 10px; border-radius: 4px; }
