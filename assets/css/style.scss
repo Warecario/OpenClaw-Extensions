@@ -1,58 +1,42 @@
----
----
-@import "{{ site.theme }}";
-
-/* Base Body Colors */
-body {
-  background-color: #1e1e1e !important;
-  color: #cccccc !important;
-  font-family: "Segoe UI", Arial, sans-serif !important;
+/* Layout Tweaks */
+#nav-container { margin-bottom: 20px; border-bottom: 1px solid #2a2d2e; }
+.nav-tab { 
+    background: none; border: none; color: #858585; padding: 10px 20px; 
+    cursor: pointer; font-size: 16px; font-weight: bold; 
 }
+.nav-tab.active { color: #007acc; border-bottom: 2px solid #007acc; }
 
-/* Header and Content Backgrounds */
-#header_wrap {
-  background-color: #1e1e1e !important;
-  border-bottom: 3px solid #007acc !important;
+.view { display: none; }
+.view.active { display: block; }
+
+.card { background: #252526; padding: 20px; border-radius: 4px; border: 1px solid #2a2d2e; }
+
+.app-container { display: flex; height: 500px; gap: 10px; }
+
+/* Sidebar */
+.sidebar { 
+    width: 250px; background: #252526; border: 1px solid #2a2d2e; 
+    display: flex; flex-direction: column; 
 }
-
-#main_content_wrap {
-  background-color: #252526 !important;
-  border: 1px solid #2a2d2e !important;
+#search-bar { 
+    background: #1e1e1e; border: 1px solid #2a2d2e; color: #ccc; 
+    padding: 10px; margin: 10px; border-radius: 4px; 
 }
-
-/* Links and Accents */
-a {
-  color: #007acc !important;
-  text-decoration: none;
+#extension-list { overflow-y: auto; flex-grow: 1; }
+.ext-item { 
+    width: 100%; text-align: left; background: none; border: none; 
+    color: #ccc; padding: 10px 15px; cursor: pointer; border-bottom: 1px solid #1e1e1e;
 }
+.ext-item:hover { background: #2a2d2e; }
 
-a:hover {
-  color: #cccccc !important;
-  text-decoration: underline;
+/* Details */
+.details-panel { 
+    flex-grow: 1; background: #252526; border: 1px solid #2a2d2e; 
+    padding: 30px; position: relative;
 }
+.placeholder-text { color: #858585; text-align: center; margin-top: 100px; }
 
-/* Green Buttons */
-.btn {
-  background-color: #16825d !important;
-  color: #ffffff !important;
-  border: none !important;
-  background-image: none !important;
-  font-weight: bold;
-  box-shadow: none !important;
-}
-
-.btn:hover {
-  background-color: #1a9c6f !important;
-  color: #ffffff !important;
-}
-
-/* Secondary Text Elements like blockquotes or small text */
-h1, h2, h3, h4, h5, h6 {
-  color: #cccccc !important;
-}
-
-blockquote, code, pre {
-  background-color: #1e1e1e !important;
-  color: #858585 !important;
-  border-color: #007acc !important;
+.copy-btn { 
+    background: #16825d; color: white; border: none; padding: 12px 24px; 
+    border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 16px;
 }
