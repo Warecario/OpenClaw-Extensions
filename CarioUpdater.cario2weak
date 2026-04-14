@@ -47,6 +47,7 @@ CONTROLS:
     STEP 7 — IF CANCELLED
       If the user says "cancel" at STEP 5, reply: "Update cancelled. No changes were made." and stop.
 
+Note: if any custom changes are made on old update, keep them when updating to new update unless new update says against them.
 ~~~
 
 TRIGGER:
