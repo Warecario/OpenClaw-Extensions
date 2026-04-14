@@ -3,9 +3,9 @@ layout: default
 ---
 
 <div id="nav-container">
-    <button class="nav-tab active" onclick="showTab('home')">Home</button>
-    <button class="nav-tab" onclick="showTab('extensions')">Extensions</button>
-    <button class="nav-tab" onclick="showTab('license')">License</button>
+    <button class="nav-tab active" onclick="showTab(this, 'home')">Home</button>
+    <button class="nav-tab" onclick="showTab(this, 'extensions')">Extensions</button>
+    <button class="nav-tab" onclick="showTab(this, 'license')">License</button>
 </div>
 
 <div id="home-view" class="view active">
@@ -41,21 +41,18 @@ layout: default
 <div id="license-view" class="view">
     <div class="card">
         <h3>License</h3>
-        <p>ARR</p>
+        <p><b>All Rights Reserved (ARR)</b></p>
         <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
-        <ol>
-            <p>These files can be used by everybody. But only Warecario may make, distribute, or sell these projects. The Template file is only by for Warecario's use. Anything against this is strictly prohibited.</p>
-            <p>.cario2weak is not copyrighted, as it's a file extension. My only ask is you use it for plugin making, but dont use my Template for it.</p>
-        </ol>
+        <div style="color: #e1e1e1;">
+            <p>These files can be used by everybody. But only Warecario may make, distribute, or sell these projects. The Template file is for Warecario's use only. Anything against this is strictly prohibited.</p>
+            <p><code>.cario2weak</code> is not copyrighted, as it's a file extension. My only ask is you use it for plugin making, but don't use my Template for it.</p>
+        </div>
     </div>
 </div>
 
 <script>
-// --- VERIFY THESE ARE CORRECT ---
 const GITHUB_USER = "Warecario";
 const GITHUB_REPO = "OpenClaw-Extensions";
-const BRANCH = "main"; // Change to "master" if that is your main branch
-// --------------------------------
 
 let allExtensions = [];
 
@@ -63,26 +60,15 @@ async function loadData() {
     const listDiv = document.getElementById('extension-list');
     
     try {
-        // 1. Get Repo Contents
         const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents`);
-        if (!res.ok) throw new Error("Could not access repository. Is the name correct?");
+        if (!res.ok) throw new Error("Could not access repository.");
         
         const files = await res.json();
         
-        // Filter for your specific extensions
         allExtensions = files.filter(f => f.name.endsWith('.cario2weak') || f.name.endsWith('.octweak'))
                              .filter(f => f.name !== 'template.cario2weak');
 
         renderList(allExtensions);
-
-        // 2. Get License Content
-        const licRes = await fetch(`https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${BRANCH}/License`);
-        if (licRes.ok) {
-            document.getElementById('license-text').innerText = await licRes.text();
-        } else {
-            document.getElementById('license-text').innerText = "License file not found in the root folder.";
-        }
-
     } catch (err) {
         listDiv.innerHTML = `<p style="padding:20px; color:#ff6b6b;"><b>Error:</b> ${err.message}</p>`;
     }
@@ -98,7 +84,7 @@ function formatName(name) {
 function renderList(list) {
     const container = document.getElementById('extension-list');
     if (list.length === 0) {
-        container.innerHTML = "<p style='padding:20px;'>No .cario2weak files found in this repo.</p>";
+        container.innerHTML = "<p style='padding:20px;'>No extensions found.</p>";
         return;
     }
     container.innerHTML = list.map(ext => `
@@ -117,7 +103,7 @@ function filterExtensions() {
 function selectExtension(name, url) {
     const panel = document.getElementById('details-panel');
     panel.innerHTML = `
-        <h2 style="margin-top:0;">${formatName(name)}</h2>
+        <h2 style="margin-top:0; color: #fff;">${formatName(name)}</h2>
         <p style="color:#858585; margin-bottom: 30px;">File: <code>${name}</code></p>
         <button class="copy-btn" onclick="copyPrompt('${url}', this)">Copy Install Prompt</button>
     `;
@@ -134,11 +120,17 @@ function copyPrompt(url, btn) {
     }, 2000);
 }
 
-function showTab(tabId) {
+// FIXED TAB SWITCHER
+function showTab(btnElement, tabId) {
+    // Hide all views
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    // Deactivate all tabs
     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    
+    // Show selected view
     document.getElementById(tabId + '-view').classList.add('active');
-    event.currentTarget.classList.add('active');
+    // Activate clicked button
+    btnElement.classList.add('active');
 }
 
 loadData();
