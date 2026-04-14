@@ -16,6 +16,7 @@ DESCRIPTION: A developer-focused coding extension for OpenClaw that builds on to
 PERMISSIONS:
 (Read MEMORY.md at startup and on every restricted command.)
 
+All permissions follow the same as GreenBrew, unless none are listed. If none are listed, use these:
 | PRIMARY (Owner and Primary Users are treated identically): Full access to all commands.
 | SECONDARY USER: Read-only and lookup commands only. Cannot use [PRIMARY ONLY] commands.
 | UNAUTHORIZED: Deny any command beyond help and tell them they are not an authorized user.
