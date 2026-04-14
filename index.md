@@ -48,12 +48,23 @@ layout: default
 
 <script>
 let allExtensions = [];
-// IMPORTANT: Change 'Warecario' to your actual GitHub username if different
-const repoPath = 'Warecario/OpenClaw-Extensions'; 
+
+// --- CONFIGURATION ---
+const username = "Warecario"; 
+const repo = "OpenClaw-Extensions"; 
+const branch = "main"; // <--- CHANGE TO "master" IF YOUR BRANCH IS MASTER
+// ---------------------
 
 async function loadData() {
+    const listContainer = document.getElementById('extension-list');
+    const licenseContainer = document.getElementById('license-text');
+
     try {
-        const response = await fetch(`https://api.github.com/repos/${repoPath}/contents`);
+        // 1. Fetch Extensions
+        const response = await fetch(`https://api.github.com/repos/${username}/${repo}/contents`);
+        
+        if (!response.ok) throw new Error(`GitHub API Error: ${response.statusText}`);
+        
         const files = await response.json();
         
         allExtensions = files.filter(f => f.name.endsWith('.cario2weak') || f.name.endsWith('.octweak'))
@@ -61,14 +72,23 @@ async function loadData() {
 
         renderList(allExtensions);
 
-        const licRes = await fetch(`https://raw.githubusercontent.com/${repoPath}/main/License`);
-        if(licRes.ok) {
-            document.getElementById('license-text').innerText = await licRes.text();
-        } else {
-            document.getElementById('license-text').innerText = "License file not found in repository.";
+        // 2. Fetch License (Checking for License, LICENSE, or License.txt)
+        const possibleLicenses = ['License', 'LICENSE', 'license.txt', 'LICENSE.md'];
+        let licenseData = "License file not found.";
+
+        for (let name of possibleLicenses) {
+            const licRes = await fetch(`https://raw.githubusercontent.com/${username}/${repo}/${branch}/${name}`);
+            if (licRes.ok) {
+                licenseData = await licRes.text();
+                break;
+            }
         }
+        licenseContainer.innerText = licenseData;
+
     } catch (e) {
-        document.getElementById('extension-list').innerHTML = "<p style='padding:10px; color:red;'>Error loading extensions. Check repo name.</p>";
+        console.error(e);
+        listContainer.innerHTML = `<p style="padding:10px; color:#ff6b6b;">Error: ${e.message}. <br><br>Check if your repo name "${repo}" is correct.</p>`;
+        licenseContainer.innerText = "Error loading license.";
     }
 }
 
@@ -83,7 +103,7 @@ function formatName(filename) {
 function renderList(list) {
     const container = document.getElementById('extension-list');
     if (list.length === 0) {
-        container.innerHTML = "<p style='padding:10px; color:#858585;'>No extensions found.</p>";
+        container.innerHTML = "<p style='padding:10px; color:#858585;'>No .cario2weak files found.</p>";
         return;
     }
     container.innerHTML = list.map(ext => {
