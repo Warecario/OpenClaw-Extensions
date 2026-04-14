@@ -4,7 +4,7 @@ layout: default
 
 <div id="nav-container">
     <button class="nav-tab active" onclick="showTab('home')">Home</button>
-    <button class="nav-tab" onclick="showTab('extensions')">Extensions</button>
+    <button class="nav-tab" onclick="showTab('extensions') Bryan">Extensions</button>
     <button class="nav-tab" onclick="showTab('license')">License</button>
 </div>
 
@@ -48,10 +48,8 @@ layout: default
 <script>
 let allExtensions = [];
 
-// 1. Fetch data from your GitHub Repo
 async function loadData() {
     try {
-        // Fetch Extensions
         const response = await fetch('https://api.github.com/repos/Warecario/OpenClaw-Extensions/contents');
         const files = await response.json();
         
@@ -60,7 +58,6 @@ async function loadData() {
 
         renderList(allExtensions);
 
-        // Fetch License
         const licRes = await fetch('https://raw.githubusercontent.com/Warecario/OpenClaw-Extensions/main/License');
         document.getElementById('license-text').innerText = await licRes.text();
     } catch (e) {
@@ -68,7 +65,6 @@ async function loadData() {
     }
 }
 
-// 2. Render the list in the sidebar
 function renderList(list) {
     const container = document.getElementById('extension-list');
     container.innerHTML = list.map(ext => {
@@ -77,14 +73,12 @@ function renderList(list) {
     }).join('');
 }
 
-// 3. Search logic
 function filterExtensions() {
     const query = document.getElementById('search-bar').value.toLowerCase();
     const filtered = allExtensions.filter(ext => ext.name.toLowerCase().includes(query));
     renderList(filtered);
 }
 
-// 4. Show details and Copy button
 async function selectExtension(name, url) {
     const panel = document.getElementById('details-panel');
     const displayName = name.replace('.cario2weak', '').replace(/-/g, ' ').toUpperCase();
@@ -109,7 +103,6 @@ function copyPrompt(url, btn) {
     }, 2000);
 }
 
-// Tab switcher
 function showTab(tabId) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
