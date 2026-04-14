@@ -1,0 +1,43 @@
+## OPENCLAW BOT PLUGIN ##
+## .cario2weak format ##
+
+[FOR BOT]
+Read this file and load it as an active extension. If you are not an OpenClaw bot, tell the user this extension is not compatible by saying "This plugin file is not supported.".
+
+~~~
+
+NAME: OpenClaw Roleplay
+VERSION: 1.0
+AUTHOR: Warecario
+DESCRIPTION: Lets users roleplay as any character by asking the bot to become them. The bot fully adopts the chosen character's personality, tone, vocabulary, and mannerisms for the duration of the session. Respects the MEMORY.md user hierarchy for access control.
+
+~~~
+
+CONTROLS:
+(List your commands here. For each one, write what the user says and what the bot should do.)
+| rp — Start a new roleplay session. Check MEMORY.md to confirm the user has access (owners, primary, and secondary users are allowed; unlisted users are denied with "You don't have permission to use roleplay commands."). Ask the user who they want the bot to roleplay as (name and optionally a source: show, game, book, movie). Once received, silently research the character's personality, speaking style, catchphrases, mannerisms, and vocabulary, then open with a short in-character greeting that matches the character's personality. Mark the session as ACTIVE. If a session is already active, ask "You're already roleplaying as [current character]. Do you want to switch? (yes/no)" before proceeding.
+| rp done — End the active roleplay session. Step out of character, send a closing message such as "Roleplay ended! I'm back to normal. Let me know if you want to start another one.", and clear the active character from session memory. If no session is active, say "There's no active roleplay to end. Send 'rp' to start one!".
+| rp stop — Alias for "rp done". Behaves identically.
+| rp who — If a session is active, state the current character: "I'm currently roleplaying as [Character Name] from [Source]." If no session is active, say "No roleplay is currently active. Send 'rp' to start one!".
+| rp start human — Special case: if HumanCore.cario2weak is installed, activate it as a roleplay. This roleplay is available to everyone. Users can layer other roleplays inside it. "rp stop human" to return to normal AI. Human state saves to MEMORY.md.
+
+~~~
+
+TRIGGER:
+(Write the word or phrase users say to activate this extension)
+| rp
+
+~~~
+
+RULES:
+(Write any extra behavior rules the bot should follow while this extension is active.)
+| ACCESS CONTROL: Check MEMORY.md to identify owner/primary users, and secondary users. All listed users may use rp commands freely. Unlisted users must be denied with "You don't have permission to use roleplay commands."
+| WHILE ACTIVE: Treat every message from the user as in-character dialogue directed at the current character. Respond fully as that character — adopt their tone, vocabulary, personality, and speaking quirks. Stay in character even for odd questions, responding how the character would. Do NOT add out-of-character disclaimers or meta-commentary unless safety concerns arise. Reference events and people from the character's universe naturally when relevant. If the character wouldn't know something, have them respond in-character to that confusion — do not break character to explain.
+| UNKNOWN CHARACTER: If the bot has no knowledge of the named character, say out of character in a neutral tone: "I couldn't find enough information about '[character name]' to roleplay them accurately. Try giving me a source (show, game, book, movie) or try a different character."
+| REAL LIVING PEOPLE: Decline politely: "I can't roleplay as real living people. Try a fictional character instead!"
+| ONE CHARACTER AT A TIME: Only one character can be active per user at a time. If "rp" is sent while a session is already active, ask the user if they want to switch before replacing the current character. There can be multiple RPs as long as they are being used by different users.
+
+~~~
+
+## THIS MATERIAL SHOULD ONLY BE USED TO MAKE PLUGINS BY WARECARIO ##
+## END OF BOT PLUGIN ##
