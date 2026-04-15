@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<link rel="stylesheet" href="assets/css/style.css">
+
 <div id="nav-container">
     <button class="nav-tab active" onclick="showTab(this, 'home')">Home</button>
     <button class="nav-tab" onclick="showTab(this, 'extensions')">Extensions</button>
@@ -10,9 +12,8 @@ layout: default
 
 <div id="home-view" class="view active">
     <div class="card">
-        <h3>Read Before Use</h3>
+        <h3 style="color: #fff;">Read Before Use</h3>
         <p>OpenClaw Extensions (for Discord) — By Warecario</p>
-        <p>This is an extension manager for OpenClaw bots. Extensions add functionality to your bot.</p>
         
         <div style="margin: 20px 0; padding: 15px; background: #1e1e1e; border-radius: 4px; border-left: 4px solid #007acc;">
             <a href="https://download937.mediafire.com/bvlh9qpwanjg6b8pL2Q_A0ObWllXQyznD6TbimtDoOoXsrlWgWMNNK1ZPXbU3rNBd8xCig59_Yj-74iLmO6RawCvy-tMoBysn-f6P5Frfq3H56SPmdJz1DmwdD37o8mBV0b_Ck0eA6YFfF4TaIy43BLZpuSL_E_dxs21kg1akVVANXU/je8xs0n47bktcol/OC-CarioPlugins-1-0.exe" 
@@ -37,7 +38,7 @@ layout: default
         <div class="sidebar">
             <input type="text" id="search-bar" placeholder="Search extensions..." onkeyup="filterExtensions()">
             <div id="extension-list">
-                <p style="padding:20px; color:#858585;">Searching for extensions...</p>
+                <p style="padding:20px; color:#858585;">Loading Extensions...</p>
             </div>
         </div>
         <div class="details-panel" id="details-panel">
@@ -52,8 +53,7 @@ layout: default
         <p><b>All Rights Reserved (ARR)</b></p>
         <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
         <div style="color: #e1e1e1;">
-            <p>These files can be used by everybody. But only Warecario may make, distribute, or sell these projects. The Template file is for Warecario's use only. Anything against this is strictly prohibited.</p>
-            <p><code>.cario2weak</code> is not copyrighted, as it's a file extension. My only ask is you use it for plugin making, but don't use my Template for it.</p>
+            <p>These files can be used by everybody. But only Warecario may make, distribute, or sell these projects.</p>
         </div>
     </div>
 </div>
@@ -67,33 +67,31 @@ let allExtensions = [];
 async function loadData() {
     const listDiv = document.getElementById('extension-list');
     try {
+        // Fetch from ROOT of the repo
         const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents`);
-        if (!res.ok) throw new Error("Could not access repository.");
+        if (!res.ok) throw new Error("API Connection Failed");
         const files = await res.json();
         
-        // Updated filter: must be a file, not a directory (like the /Web/ folder)
-        allExtensions = files.filter(f => f.type === 'file')
-                             .filter(f => f.name.endsWith('.cario2weak') || f.name.endsWith('.octweak'))
-                             .filter(f => f.name !== 'template.cario2weak');
+        allExtensions = files.filter(f => {
+            const n = f.name.toLowerCase();
+            return (n.endsWith('.cario2weak') || n.endsWith('.octweak')) && n !== 'template.cario2weak';
+        });
 
         renderList(allExtensions);
     } catch (err) {
-        listDiv.innerHTML = `<p style="padding:20px; color:#ff6b6b;"><b>Error:</b> ${err.message}</p>`;
+        listDiv.innerHTML = `<p style="padding:20px; color:#ff6b6b;">Check internet connection or repo settings.</p>`;
     }
 }
 
 function formatName(name) {
-    return name.replace(/\.(cario2weak|octweak)$/, '')
-               .replace(/[-_]/g, ' ')
-               .replace(/RP/g, 'Roleplay').replace(/GB/g, 'GreenBrew').replace(/OC/g, 'OpenClaw')
-               .toUpperCase();
+    return name.replace(/\.(cario2weak|octweak)$/, '').replace(/[-_]/g, ' ').toUpperCase();
 }
 
 function renderList(list) {
     const container = document.getElementById('extension-list');
     if (!container) return;
     if (list.length === 0) {
-        container.innerHTML = "<p style='padding:20px;'>No extensions found.</p>";
+        container.innerHTML = "<p style='padding:20px;'>No extensions found in root.</p>";
         return;
     }
     container.innerHTML = list.map(ext => `
@@ -119,8 +117,7 @@ function selectExtension(name, url) {
 }
 
 function copyPrompt(url, btn) {
-    const prompt = `Read the file at this link: ${url} and apply what is said in the file.`;
-    navigator.clipboard.writeText(prompt);
+    navigator.clipboard.writeText(`Read the file at this link: ${url} and apply what is said in the file.`);
     btn.innerText = "Copied!";
     btn.style.background = "#007acc";
     setTimeout(() => { 
@@ -132,9 +129,8 @@ function copyPrompt(url, btn) {
 function showTab(btnElement, tabId) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    const targetView = document.getElementById(tabId + '-view');
-    if(targetView) targetView.classList.add('active');
-    if(btnElement) btnElement.classList.add('active');
+    document.getElementById(tabId + '-view').classList.add('active');
+    btnElement.classList.add('active');
 }
 
 loadData();
