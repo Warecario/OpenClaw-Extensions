@@ -1,7 +1,9 @@
 ---
 layout: default
 ---
-<link rel="icon" type="image/png" href="/assets/webicon.png">
+<head>
+<link rel="icon" type="image/png" href="assets/webicon.png">
+</head>
 
 <link rel="stylesheet" href="assets/css/style.css">
 
