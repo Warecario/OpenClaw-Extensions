@@ -1,11 +1,13 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="icon" type="image/png" href="https://warecario.github.io/OpenClaw-Extensions/assets/webicon.png?v=3">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Extensions</title>
+    <link rel="icon" type="image/png" href="assets/webicon.png?v=4">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
-<link rel="stylesheet" href="assets/css/style.css">
+<body>
 
 <div id="nav-container">
     <button class="nav-tab active" onclick="showTab(this, 'home')">Home</button>
@@ -70,7 +72,6 @@ let allExtensions = [];
 async function loadData() {
     const listDiv = document.getElementById('extension-list');
     try {
-        // Fetch from ROOT of the repo
         const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents`);
         if (!res.ok) throw new Error("API Connection Failed");
         const files = await res.json();
@@ -138,3 +139,6 @@ function showTab(btnElement, tabId) {
 
 loadData();
 </script>
+
+</body>
+</html>
