@@ -1,4 +1,4 @@
 theme: jekyll-theme-slate
 title: OpenClaw Extensions (For Discord)
-# Add these lines to help Jekyll find your assets inside the new folder
+baseurl: "/OpenClaw-Extensions/Web"
 include: [Web]
