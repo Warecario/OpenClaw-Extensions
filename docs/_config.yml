@@ -1,3 +1,4 @@
-theme: jekyll-theme-slate
+theme: jekyll-theme-cayman
 title: OpenClaw Extensions (For Discord)
+description: Extensions for OpenClaw Discord Bots. Made by Warecario.
 baseurl: "/OpenClaw-Extensions/docs"
