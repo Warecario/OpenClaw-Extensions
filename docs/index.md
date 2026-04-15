@@ -2,7 +2,7 @@
 layout: default
 ---
 <head>
-<link rel="icon" type="image/png" href="assets/webicon.png?v=2">
+<link rel="icon" type="image/png" href="https://warecario.github.io/OpenClaw-Extensions/assets/webicon.png?v=3">
 </head>
 
 <link rel="stylesheet" href="assets/css/style.css">
