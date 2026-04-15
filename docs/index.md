@@ -7,10 +7,10 @@ layout: null
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenClaw Extensions</title>
-    <link rel="icon" type="image/png" href="assets/webicon.png?v=10">
+    <link rel="icon" type="image/png" href="https://warecario.github.io/OpenClaw-Extensions/assets/webicon.png?v=15">
     <link rel="stylesheet" href="assets/css/style.scss">
 </head>
-<body>
+<body style="background-color: #0d1117; margin: 0; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
 
 <div id="nav-container">
     <button class="nav-tab active" onclick="showTab(this, 'home')">Home</button>
