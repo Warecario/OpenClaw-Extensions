@@ -1,5 +1,3 @@
 theme: jekyll-theme-slate
 title: OpenClaw Extensions (For Discord)
-baseurl: "/OpenClaw-Extensions/Web"
-include: [Web]
-exclude: [README.md]
+baseurl: "/OpenClaw-Extensions/docs"
