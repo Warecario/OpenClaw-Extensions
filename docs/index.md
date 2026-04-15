@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-
+<link rel="icon" type="image/png" href="assets/webicon.png">
 <link rel="stylesheet" href="assets/css/style.css">
 
 <div id="nav-container">
