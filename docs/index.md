@@ -93,13 +93,30 @@ function filterExtensions() {
     renderList(filtered);
 }
 
-function selectExtension(name, url) {
+async function selectExtension(name, url) {
     const panel = document.getElementById('details-panel');
-    panel.innerHTML = `
-        <h2>${formatName(name)}</h2>
-        <p>File: <code>${name}</code></p>
-        <button class="copy-btn" onclick="copyPrompt('${url}', this)">Copy Install Prompt</button>
-    `;
+    panel.innerHTML = `<div class="loading">Reading plugin data...</div>`;
+    
+    try {
+        const res = await fetch(url);
+        const text = await res.json(); // If GitHub API gives base64
+        const content = atob(text.content); // Decode it
+        
+        // Regex to grab the Description block
+        const descMatch = content.match(/DESCRIPTION:\s*([\s\S]*?)\s*~~~/);
+        const description = descMatch ? descMatch[1].trim().substring(0, 500) : "No description provided.";
+        
+        panel.innerHTML = `
+            <h2>${formatName(name)}</h2>
+            <div class="desc-box">
+                <p><strong>About:</strong> ${description}</p>
+            </div>
+            <p>File: <code>${name}</code></p>
+            <button class="copy-btn" onclick="copyPrompt('${url}', this)">Copy Install Prompt</button>
+        `;
+    } catch (err) {
+        panel.innerHTML = `<h2>${formatName(name)}</h2><p>Error loading description.</p>`;
+    }
 }
 
 function copyPrompt(url, btn) {
