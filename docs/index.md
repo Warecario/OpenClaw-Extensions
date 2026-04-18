@@ -104,7 +104,7 @@ async function selectExtension(name, url) {
         
         // Regex to grab the Description block
         const descMatch = content.match(/DESCRIPTION:\s*([\s\S]*?)\s*~~~/);
-        const description = descMatch ? descMatch[1].trim().substring(0, 500) : "No description provided.";
+        const description = descMatch ? descMatch[1].trim().substring(0, 600) : "No description provided.";
         
         panel.innerHTML = `
             <h2>${formatName(name)}</h2>
