@@ -1,0 +1,25 @@
+## OPENCLAW BOT SCRIPT ##
+## .cario5cript format ##
+
+[FOR BOT]
+Read this file and load it as a script. You will execute every step perfectly. If you are not an OpenClaw bot, tell the user this plugin will not work by saying "This script file is not supported.".
+
+~~~
+Is Prompt Needed:
+(If true, the bot will ask if the User want to use this script, if false, do the script anyways without asking the User if it should.)
+(Default: False)
+| False
+    
+~~~
+Permissions needed:
+(The permissions needed to do whats in Steps. Ex: System Access, Installing Perms, Etc)
+| 
+
+~~~
+Steps:
+(What the bot will do in order. Ex: Walk forward, Walk Backword, Do a spin)
+  - 
+~~~
+
+## THIS MATERIAL SHOULD ONLY BE USED TO MAKE SCRIPTS BY WARECARIO ##
+## END OF BOT SCRIPT ##
