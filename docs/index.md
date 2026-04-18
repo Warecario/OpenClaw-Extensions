@@ -93,23 +93,29 @@ function filterExtensions() {
     renderList(filtered);
 }
 
+// THE FIXED FUNCTION
 async function selectExtension(name, url) {
     const panel = document.getElementById('details-panel');
-    panel.innerHTML = `<div class="loading">Reading plugin data...</div>`;
+    panel.innerHTML = `<div class="placeholder-text">Reading plugin data...</div>`;
     
     try {
         const res = await fetch(url);
-        const text = await res.json(); // If GitHub API gives base64
-        const content = atob(text.content); // Decode it
+        const content = await res.text(); // Get raw text from the .cario2weak file
         
-        // Regex to grab the Description block
-        const descMatch = content.match(/DESCRIPTION:\s*([\s\S]*?)\s*~~~/);
-        const description = descMatch ? descMatch[1].trim().substring(0, 600) : "No description provided.";
+        // Regex looks for DESCRIPTION: and grabs everything until the next ~~~
+        const descMatch = content.match(/DESCRIPTION:\s*([\s\S]*?)\s*~~~/i);
+        let description = descMatch ? descMatch[1].trim() : "No description provided.";
         
+        // Limit to 500 characters
+        if (description.length > 500) {
+            description = description.substring(0, 500) + "...";
+        }
+
         panel.innerHTML = `
             <h2>${formatName(name)}</h2>
-            <div class="desc-box">
-                <p><strong>About:</strong> ${description}</p>
+            <div style="text-align: left; background: #252525; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                <p style="margin: 0; font-weight: bold; color: #007acc;">Description:</p>
+                <p style="margin: 5px 0 0 0; color: #eee; line-height: 1.4;">${description}</p>
             </div>
             <p>File: <code>${name}</code></p>
             <button class="copy-btn" onclick="copyPrompt('${url}', this)">Copy Install Prompt</button>
