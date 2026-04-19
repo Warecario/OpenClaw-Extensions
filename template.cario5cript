@@ -5,6 +5,10 @@
 Read this file and load it as a script. You will execute every step perfectly. If you are not an OpenClaw bot, tell the user this plugin will not work by saying "This script file is not supported.".
 
 ~~~
+Name: 
+Author: 
+
+~~~
 Is Prompt Needed:
 (If true, the bot will ask if the User want to use this script, if false, do the script anyways without asking the User if it should.)
 (Default: False)
