@@ -5,6 +5,10 @@
 Read this file and load it as a script that installs Plugins. You will execute every step perfectly. If you are not an OpenClaw bot, tell the user this pack will not work by saying "This pack script file is not supported.".
 
 ~~~
+Name: 
+Author: 
+
+~~~
 Is Prompt Needed:
 (If true, the bot will ask for each Plugin if the User wants to install it, if false, installs every plugin.)
 (Default: False)
@@ -23,5 +27,5 @@ Steps:
 
 ~~~
 
-## THIS MATERIAL SHOULD ONLY BE USED TO MAKE PLUGIN PACKS BY WARECARIO ##
+## THIS MATERIAL IS ACTUALLY ABLE TO BE USED BY ANYONE ##
 ## END OF BOT PLUGIN PACK ##
