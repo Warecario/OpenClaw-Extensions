@@ -134,13 +134,11 @@ async function loadData() {
 
         Object.keys(categories).forEach(category => {
             allItems[category] = files.filter(f => matchesCategory(f.name, categories[category].patterns, categories[category].exclude));
-            const list = document.getElementById(categories[category].listId);
-            if (list) {
-                list.innerHTML = `<p>${categories[category].loadingText}</p>`;
-            }
         });
 
         renderList(allItems.extensions, 'extensions');
+        renderList(allItems.scripts, 'scripts');
+        renderList(allItems.packs, 'packs');
     } catch (err) {
         Object.keys(categories).forEach(category => {
             const list = document.getElementById(categories[category].listId);
@@ -222,4 +220,5 @@ function showTab(btnElement, tabId) {
 }
 
 loadData();
+setInterval(loadData, 30000);
 </script>
