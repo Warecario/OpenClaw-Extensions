@@ -18,7 +18,7 @@ layout: default
         <p>OpenClaw Extensions (for Discord) — By Warecario</p>
         
         <div style="margin: 20px 0; padding: 15px; background: #1e1e1e; border-radius: 4px; border-left: 4px solid #007acc;">
-            <a href="https://github.com/Warecario/OpenClaw-Extensions/releases/download/v1/OC-CarioPlugins-1-0.exe" style="color: #007acc !important; font-weight: bold; text-decoration: none;">
+            <a href="https://github.com/Warecario/OpenClaw-Extensions/releases/download/v2/OC-CarioPlugins-2-0.exe" style="color: #007acc !important; font-weight: bold; text-decoration: none;">
                App For Windows
             </a>
         </div>
