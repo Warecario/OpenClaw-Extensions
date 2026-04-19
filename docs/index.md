@@ -132,14 +132,18 @@ async function loadData() {
         const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents`);
         const files = await res.json();
 
+        console.log('Fetched files from GitHub:', files.map(f => f.name));
+
         Object.keys(categories).forEach(category => {
             allItems[category] = files.filter(f => matchesCategory(f.name, categories[category].patterns, categories[category].exclude));
+            console.log(`${category}:`, allItems[category].map(item => item.name));
         });
 
         renderList(allItems.extensions, 'extensions');
         renderList(allItems.scripts, 'scripts');
         renderList(allItems.packs, 'packs');
     } catch (err) {
+        console.error('Load error:', err);
         Object.keys(categories).forEach(category => {
             const list = document.getElementById(categories[category].listId);
             if (list) {
