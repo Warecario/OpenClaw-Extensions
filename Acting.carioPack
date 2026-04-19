@@ -5,8 +5,9 @@
 Read this file and load it as a script that installs Plugins. You will execute every step perfectly. If you are not an OpenClaw bot, tell the user this pack will not work by saying "This pack script file is not supported.".
 
 ~~~
-Name: 
-Author: 
+Name: Acting
+Author: Warecario
+Description: A pack that adds all the fun behavior addons for a bot. Its fun to use, and really adds character...
 
 ~~~
 Is Prompt Needed:
