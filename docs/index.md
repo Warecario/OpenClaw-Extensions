@@ -7,6 +7,8 @@ layout: default
 <div id="nav-container">
     <button class="nav-tab active" onclick="showTab(this, 'home')">Home</button>
     <button class="nav-tab" onclick="showTab(this, 'extensions')">Extensions</button>
+    <button class="nav-tab" onclick="showTab(this, 'scripts')">Scripts</button>
+    <button class="nav-tab" onclick="showTab(this, 'packs')">Packs</button>
     <button class="nav-tab" onclick="showTab(this, 'license')">License</button>
 </div>
 
@@ -25,7 +27,9 @@ layout: default
         <h4>How to use:</h4>
         <ol>
             <li>Browse extensions in the <b>Extensions</b> tab.</li>
-            <li>Click an extension to view details.</li>
+            <li>Browse scripts in the <b>Scripts</b> tab.</li>
+            <li>Browse plugin packs in the <b>Packs</b> tab.</li>
+            <li>Click an item to view details.</li>
             <li>Click the <b>Copy</b> button to get the install prompt.</li>
             <li>Paste the prompt to your bot to install.</li>
         </ol>
@@ -35,13 +39,41 @@ layout: default
 <div id="extensions-view" class="view">
     <div class="app-container">
         <div class="sidebar">
-            <input type="text" id="search-bar" placeholder="Search extensions..." onkeyup="filterExtensions()">
+            <input type="text" id="search-extensions" placeholder="Search extensions..." onkeyup="filterItems('extensions')">
             <div id="extension-list">
                 <p>Loading Extensions...</p>
             </div>
         </div>
-        <div class="details-panel" id="details-panel">
+        <div class="details-panel" id="details-panel-extensions">
             <div class="placeholder-text">Select an extension from the list</div>
+        </div>
+    </div>
+</div>
+
+<div id="scripts-view" class="view">
+    <div class="app-container">
+        <div class="sidebar">
+            <input type="text" id="search-scripts" placeholder="Search scripts..." onkeyup="filterItems('scripts')">
+            <div id="script-list">
+                <p>Loading Scripts...</p>
+            </div>
+        </div>
+        <div class="details-panel" id="details-panel-scripts">
+            <div class="placeholder-text">Select a script from the list</div>
+        </div>
+    </div>
+</div>
+
+<div id="packs-view" class="view">
+    <div class="app-container">
+        <div class="sidebar">
+            <input type="text" id="search-packs" placeholder="Search packs..." onkeyup="filterItems('packs')">
+            <div id="pack-list">
+                <p>Loading Packs...</p>
+            </div>
+        </div>
+        <div class="details-panel" id="details-panel-packs">
+            <div class="placeholder-text">Select a pack from the list</div>
         </div>
     </div>
 </div>
@@ -58,57 +90,108 @@ layout: default
 <script>
 const GITHUB_USER = "Warecario";
 const GITHUB_REPO = "OpenClaw-Extensions";
-let allExtensions = [];
+
+const categories = {
+    extensions: {
+        listId: 'extension-list',
+        searchId: 'search-extensions',
+        panelId: 'details-panel-extensions',
+        placeholder: 'Select an extension from the list',
+        loadingText: 'Loading Extensions...',
+        patterns: ['.cario2weak', '.octweak'],
+        exclude: ['template.cario2weak']
+    },
+    scripts: {
+        listId: 'script-list',
+        searchId: 'search-scripts',
+        panelId: 'details-panel-scripts',
+        placeholder: 'Select a script from the list',
+        loadingText: 'Loading Scripts...',
+        patterns: ['.cario5cript'],
+        exclude: ['template.cario5cript']
+    },
+    packs: {
+        listId: 'pack-list',
+        searchId: 'search-packs',
+        panelId: 'details-panel-packs',
+        placeholder: 'Select a pack from the list',
+        loadingText: 'Loading Packs...',
+        patterns: ['.carioPack'],
+        exclude: ['template.carioPack']
+    }
+};
+
+const allItems = {
+    extensions: [],
+    scripts: [],
+    packs: []
+};
 
 async function loadData() {
-    const listDiv = document.getElementById('extension-list');
     try {
         const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents`);
         const files = await res.json();
-        allExtensions = files.filter(f => {
-            const n = f.name.toLowerCase();
-            return (n.endsWith('.cario2weak') || n.endsWith('.octweak')) && n !== 'template.cario2weak';
+
+        Object.keys(categories).forEach(category => {
+            allItems[category] = files.filter(f => matchesCategory(f.name, categories[category].patterns, categories[category].exclude));
+            const list = document.getElementById(categories[category].listId);
+            if (list) {
+                list.innerHTML = `<p>${categories[category].loadingText}</p>`;
+            }
         });
-        renderList(allExtensions);
+
+        renderList(allItems.extensions, 'extensions');
     } catch (err) {
-        listDiv.innerHTML = `<p>Check connection or repo settings.</p>`;
+        Object.keys(categories).forEach(category => {
+            const list = document.getElementById(categories[category].listId);
+            if (list) {
+                list.innerHTML = `<p>Check connection or repo settings.</p>`;
+            }
+        });
     }
 }
 
-function formatName(name) { return name.replace(/\.(cario2weak|octweak)$/, '').replace(/[-_]/g, ' ').toUpperCase(); }
+function matchesCategory(name, patterns, exclude) {
+    const lower = name.toLowerCase();
+    return patterns.some(pattern => lower.endsWith(pattern.toLowerCase())) && !exclude.map(item => item.toLowerCase()).includes(lower);
+}
 
-function renderList(list) {
-    const container = document.getElementById('extension-list');
+function formatName(name) {
+    return name.replace(/\.(cario2weak|octweak|cario5cript|carioPack)$/i, '').replace(/[-_]/g, ' ').toUpperCase();
+}
+
+function renderList(list, category) {
+    const container = document.getElementById(categories[category].listId);
     if (!container) return;
-    container.innerHTML = list.map(ext => `
-        <button class="ext-item" onclick="selectExtension('${ext.name}', '${ext.download_url}')">
-            ${formatName(ext.name)}
+    if (!list.length) {
+        container.innerHTML = `<p>No items found.</p>`;
+        return;
+    }
+    container.innerHTML = list.map(item => `
+        <button class="ext-item" onclick="selectItem('${category}', '${item.name}', '${item.download_url}')">
+            ${formatName(item.name)}
         </button>
     `).join('');
 }
 
-function filterExtensions() {
-    const query = document.getElementById('search-bar').value.toLowerCase();
-    const filtered = allExtensions.filter(ext => ext.name.toLowerCase().includes(query));
-    renderList(filtered);
+function filterItems(category) {
+    const query = document.getElementById(categories[category].searchId).value.toLowerCase();
+    const filtered = allItems[category].filter(item => item.name.toLowerCase().includes(query));
+    renderList(filtered, category);
 }
 
-// THE FIXED FUNCTION
-async function selectExtension(name, url) {
-    const panel = document.getElementById('details-panel');
-    panel.innerHTML = `<div class="placeholder-text">Reading plugin data...</div>`;
-    
+async function selectItem(category, name, url) {
+    const panel = document.getElementById(categories[category].panelId);
+    if (!panel) return;
+    panel.innerHTML = `<div class="placeholder-text">Reading item data...</div>`;
+
     try {
         const res = await fetch(url);
-        const content = await res.text(); // Get raw text from the .cario2weak file
-        
-        // Regex looks for DESCRIPTION: and grabs everything until the next ~~~
+        const content = await res.text();
         const descMatch = content.match(/DESCRIPTION:\s*([\s\S]*?)\s*~~~/i);
-        let description = descMatch ? descMatch[1].trim() : "No description provided.";
-        
-        // Limit to 500 characters
+        let description = descMatch ? descMatch[1].trim() : 'No description provided.';
         if (description.length > 500) {
-            description = description.substring(0, 500) + "...";
+            description = description.substring(0, 500) + '...';
         }
 
         panel.innerHTML = `
@@ -127,8 +210,8 @@ async function selectExtension(name, url) {
 
 function copyPrompt(url, btn) {
     navigator.clipboard.writeText(`Read the file at this link: ${url} and apply what is said in the file.`);
-    btn.innerText = "Copied!";
-    setTimeout(() => { btn.innerText = "Copy Install Prompt"; }, 2000);
+    btn.innerText = 'Copied!';
+    setTimeout(() => { btn.innerText = 'Copy Install Prompt'; }, 2000);
 }
 
 function showTab(btnElement, tabId) {
