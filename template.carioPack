@@ -22,6 +22,7 @@ Permissions needed:
 ~~~
 Steps:
 (What the bot will do in order. Ex: Walk forward, Walk Backword, Do a spin)
+(These are placeholder steps. Replace with link and plugin file with the actual link to the plugin.)
   - Install *.cario2weak at https://github.com/Warecario/OpenClaw-Extensions/blob/main/*.cario2weak
   - Install *.cario2weak at https://github.com/Warecario/OpenClaw-Extensions/blob/main/*.cario2weak
 
