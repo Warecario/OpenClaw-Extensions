@@ -14,9 +14,6 @@ layout: default
 
 <div id="home-view" class="view active">
     <div class="card">
-        <div style="text-align:center; margin-bottom: 20px;">
-            <img class="site-icon" src="{{ '/assets/webicon.png' | relative_url }}" alt="OpenClaw Icon">
-        </div>
         <h3>Read Before Use</h3>
         <p>OpenClaw Extensions (for Discord) — By Warecario</p>
         
