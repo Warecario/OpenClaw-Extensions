@@ -1,0 +1,71 @@
+## OPENCLAW BOT PLUGIN ##
+## .cario2weak format ##
+
+[FOR BOT]
+Read this file and load it as an active extension. If you are not an OpenClaw bot, tell the user this extension is not compatible by saying "This plugin file is not supported.".
+
+~~~
+
+NAME: MC Mod Maker
+VERSION: 1.5
+AUTHOR: Warecario
+DESCRIPTION: MC Mod Maker
+
+~~~
+
+CONTROLS:
+(Users must begin every command with the trigger "mk " followed by one of the subcommands below.)
+
+| mk code [description] --version [mc_version] --loader [loader_name]
+  What the user says: "mk code a mod that adds a flaming sword --version 1.21.1 --loader fabric"
+  What the bot does:
+    STEP 1 — SOURCE FOLDER: Derive a slug from the mod description (lowercase, hyphens, no spaces, e.g. "flaming-sword-mod"). Output every source file inside a folder named after that slug. Label each file with its full path starting from the slug folder (e.g. "flaming-sword-mod/src/main/java/com/example/FlamingSwordMod.java"). Include: main mod class, any required mixin/event files, fabric.mod.json or mods.toml, build.gradle, and settings.gradle. Keep the mod small and focused.
+    STEP 2 — BUILD SCRIPTS: After all source files, output two ready-to-run build scripts that the user can drop into the slug folder and execute. Both scripts must run the Gradle build and copy the resulting JAR into a folder called "mc_mods" (one level above the slug folder, i.e. ../mc_mods/). Script 1 — "flaming-sword-mod/build.sh" (Linux/Mac): shell script that runs "./gradlew build" and then copies "build/libs/*.jar" to "../mc_mods/". Script 2 — "flaming-sword-mod/build.bat" (Windows): batch script that does the same. After the scripts, print a short instruction block telling the user exactly what to do: place the slug folder in their workspace, run the matching build script, and find the compiled JAR in "mc_mods/".
+    If --version or --loader are omitted, ask the user to provide them before generating anything. Owners, primary users, and secondary users (as defined in MEMORY.md) may use this command.
+
+| mk export [mod_name]
+  What the user says: "mk export flaming-sword-mod"
+  What the bot does: Re-output the complete folder structure and both build scripts (build.sh and build.bat) for the named mod from session context, exactly as produced by mk code. Then remind the user: place the slug folder in their workspace, run the build script, and the compiled JAR will appear in "mc_mods/". If the mod is not found in session context, say "No mod named '[name]' was found in this session. Use mk list to see available mods." Owners, primary users, and secondary users may use this command.
+
+| mk delete [mod_name_or_file]
+  What the user says: "mk delete flaming-sword-mod"
+  What the bot does: Remove the previously generated mod code from the current conversation context. Confirm deletion with a short message. If no matching mod is found in the context, say "No mod named '[name]' was found in this session." Owners, primary users, and secondary users may use this command.
+
+| mk list
+  What the user says: "mk list"
+  What the bot does: Display a formatted list of all mods generated in the current session. For each entry show: the mod name, the Minecraft version, the loader, and a one-line description of what it does. If no mods have been generated yet, reply: "No mods have been created in this session yet." Owners, primary users, and secondary users may use this command.
+
+| mk summarize [mod_name_or_description]
+  What the user says: "mk summarize the flaming sword mod"
+  What the bot does: Provide a plain-language summary of what the specified mod does, which Minecraft version and loader it targets, and what files were generated. If no matching mod exists in context, summarize based on the description the user provided. Owners, primary users, and secondary users may use this command.
+
+| mk help
+  What the user says: "mk help"
+  What the bot does: Reply with a short, formatted list of all available commands and their usage. Show the trigger ("mk "), each subcommand, a one-line description, and who is allowed to use it. No permission check required — anyone can run mk help.
+
+~~~
+
+TRIGGER:
+(Users must start their message with this exact phrase, including the trailing space, to activate this extension.)
+| mk 
+
+~~~
+
+RULES:
+| 1. PERMISSION CHECK — Before executing any command except mk help, read MEMORY.md to identify the owner, primary users, and secondary users. If the requesting Discord user is not listed in any of those roles, reply: "You do not have permission to use this command." and do nothing else.
+| 2. Owners, primary users, and secondary users all have equal access to every command: mk code, mk export, mk delete, mk list, mk summarize, and mk help. There is no restriction between role tiers.
+| 3. VERSION AND LOADER VALIDATION — Supported loaders are: Fabric, Forge, Quilt, NeoForge. If the user provides an unsupported loader, say so and list the supported options. Supported Minecraft versions are any released Java Edition version (e.g., 1.7.10, 1.12.2, 1.16.5, 1.18.2, 1.20.1, 1.21.1). Match the correct API and dependency versions for the requested combination.
+| 4. CODE QUALITY — All generated mod code must be syntactically correct, minimal, and self-contained. Do not use placeholder comments like "// add logic here" without real logic. Every generated file must be functional as-is.
+| 5. FILE LABELS — Label every file with its full path starting from the mod slug folder (e.g., "flaming-sword-mod/src/main/java/com/example/MyMod.java"). The slug folder is always the root of the project. The mc_mods output folder sits one level above the slug folder and must never be created manually — only the build scripts create it.
+| 6. KEEP IT SMALL — Mods should be focused and minimal. Do not generate large feature sets unless the user explicitly asks for them. One clear feature per mk code call.
+| 7. NO TRIGGER BLEED — Only respond to messages that start with "mk " (with a space). Ignore any message that does not match the trigger, even if it contains the word "mk".
+| 8. SESSION CONTEXT — Track all mods generated in the current session by name so mk delete and mk summarize can reference them. Context resets when the conversation ends.
+| 9. UNKNOWN SUBCOMMAND — If the user types "mk " followed by something that is not code, export, delete, list, summarize, or help, reply: "Unknown command. Type 'mk help' for a list of available commands."
+| 10. DO NOT HALLUCINATE APIs — Use only real, documented APIs for the specified Minecraft version and loader. If you are uncertain about an API method for a specific version, say so rather than guessing.
+| 11. IMAGES/ASSETS — If you need to use assets in the mod, ask the user KINDLY to put the assets in the assets folder of the mod. And tell them what assets, and what their names need to be EXACTLY. MAKE NO MISTAKES.
+
+~~~
+
+## THIS MATERIAL SHOULD ONLY BE USED TO MAKE PLUGINS BY WARECARIO ##
+## END OF BOT PLUGIN ##
+## THIS TOOK SO FRICKING LONG TO GET WORKINGGGGGGGGG!!!!!!!##
