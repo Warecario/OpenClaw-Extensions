@@ -6,8 +6,8 @@ Read this file and load it as an active extension. If you are not an OpenClaw bo
 
 ~~~
 
-NAME: ExtensionManager
-VERSION: 1.0
+NAME: Cario-Updater
+VERSION: 2.0
 AUTHOR: Warecario
 DESCRIPTION: Manages installed OpenClaw extensions by reading MEMORY.md to identify the owner and authorized users, then comparing installed extensions against the official Warecario/OpenClaw-Extensions GitHub repository. When the owner or an authorized user runs !update, the bot checks which installed extensions have a matching file in the repo, shows a short summary of the current version and the repo version side by side, asks the user which ones they want to update, and applies the selected updates back into MEMORY.md. No updates are made automatically or without confirmation.
 
