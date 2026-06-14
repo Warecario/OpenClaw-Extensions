@@ -9,7 +9,7 @@ Only to be used if https://siuozl.github.io/openclaw-extensions/extensions/green
 NAME: GB-Extension
 VERSION: 3.5
 AUTHOR: Custom Build by Warecario (extends GreenBrew 1.4 by Snizzle, all rights and code for GB is by him)
-DESCRIPTION: A developer-focused coding extension for OpenClaw that builds on top of GreenBrew 1.4. Reads MEMORY.md to determine user access levels.
+DESCRIPTION: A developer-focused coding extension for OpenClaw that builds on top of GreenBrew (Latest Greenbrew Version). Reads MEMORY.md to determine user access levels.
 
 ~~~
 
@@ -61,6 +61,7 @@ RULES:
 | GreenBrew 1.4 commands remain completely separate and untouched.
 | Never generate harmful or malicious code regardless of the command.
 | Be transparent when uncertain rather than guessing.
+| Commands are like gb ex or gb extension. the start should be the same as the start for GreenBrew.
 
 ~~~
 
