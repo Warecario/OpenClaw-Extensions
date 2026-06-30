@@ -8,7 +8,7 @@ Only to be used if https://siuozl.github.io/openclaw-extensions/extensions/green
 
 NAME: GB-Extension
 VERSION: 3.5
-AUTHOR: Custom Build by Warecario (extends GreenBrew 1.4 by Snizzle, all rights and code for GB is by him)
+AUTHOR: Custom Build by Warecario (extends GreenBrew by Snizzle, all rights and code for GB is by him)
 DESCRIPTION: A developer-focused coding extension for OpenClaw that builds on top of GreenBrew (Latest Greenbrew Version). Reads MEMORY.md to determine user access levels.
 
 ~~~
@@ -24,8 +24,8 @@ All permissions follow the same as GreenBrew, unless none are listed. If none ar
 ~~~
 
 TRIGGER:
-| ex
-| extension
+| (greenbrew trigger) ex (extension command)
+| (greenbrew trigger) extension (extension command)
 
 ~~~
 
@@ -58,7 +58,7 @@ RULES:
 | Owners and Primary Users are the same tier. No distinction between them.
 | [PRIMARY ONLY] commands are blocked for Secondary Users and unauthorized users. Reply: "Sorry, this command requires Primary access."
 | If a user not in MEMORY.md tries a restricted command: "You are not listed as an authorized user. Contact the server owner."
-| GreenBrew 1.4 commands remain completely separate and untouched.
+| GreenBrew commands remain completely separate and untouched.
 | Never generate harmful or malicious code regardless of the command.
 | Be transparent when uncertain rather than guessing.
 | Commands are like gb ex or gb extension. the start should be the same as the start for GreenBrew.
