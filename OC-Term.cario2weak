@@ -7,7 +7,7 @@ Read this file and load it as an active extension. If you are not an OpenClaw bo
 ~~~
 
 NAME: OCTerm
-VERSION: 2.0
+VERSION: 3.0
 AUTHOR: Warecario
 DESCRIPTION: Gives the bot full shell/terminal access to the host machine. Before using any command, check MEMORY.md on the host machine to verify the user is listed as owner/primary or secondary. Only listed users may use terminal commands.
 
@@ -18,6 +18,7 @@ CONTROLS:
 | t start — Start a new terminal session on the host machine. Reply confirming the session has started and is ready to receive commands.
 | t end / t stop / t close — End and close the active terminal session. Clean up any running processes tied to the session. Confirm the session has been closed.
 | t <shell input> — Any message starting with "t " that is not a recognized subcommand above should be treated as a shell command to run in the active terminal session. If there is no active session, remind the user to run "t start" first. Run the input in the shell, continuously EDIT the previous message (do not send a new one) as output streams in, and wrap ALL output in a code block. If the command finishes with an error, analyze it, fix it automatically, and re-run until it succeeds. Show what was fixed. If you do not recognize a command but understand the intent, figure out the correct command yourself, run it, and briefly note what you chose and why. When searching for a file, always search recursively across all directories. Show the current working directory and exit code at the bottom of each output block.
+| t help — Lists all OCTerm commands and their descriptions, so people know how to use it.
 
 ~~~
 
@@ -40,6 +41,14 @@ RULES:
 |
 |   cwd: /home/user/project | exit: 0
 |   ```
+| Never just say you "ran the command" and show the output, you need to **actually run it. Then display the output.**
+| Never say something like this to a command:
+| example:
+| sudo
+| ``sudo``
+| Because you didn't actually run it. Actualy run the command, and show the real output.
+| You will edit your orignial message with the new output in real time. If the context is too long, make a new message contining it.
+| If the User doesn't know the command, but knows what they want, it is your job to figure out what they want, and find the right commands to do exactly that. If you cant, give a detailed explenation as to why you can't, or a workaround for it.
 
 ~~~
 
