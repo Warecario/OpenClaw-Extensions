@@ -28,7 +28,8 @@ Steps:
   - Install Human-Core.cario2weak at https://github.com/Warecario/OpenClaw-Extensions/blob/main/Human-Core.cario2weak as a plugin.
   - Install Potty-Mouth.cario2weak at https://github.com/Warecario/OpenClaw-Extensions/blob/main/Potty-Mouth.cario2weak as a plugin.
   - Install No-Moji-Fuck.cario2weak at https://github.com/Warecario/OpenClaw-Extensions/blob/main/No-Moji-Fuck.cario2weak as a plugin.
-
+  - Install Sailormouth.hypernoplugin at https://github.com/chromium112/openchrome-extentions/blob/main/Sailormouth.hypernoplugin as a plugin.
+  - Run: "rp start human" after asking "Would you like to start Human-Core?" in that exact phrasing.
 ~~~
 
 ## THIS MATERIAL IS ACTUALLY ABLE TO BE USED BY ANYONE ##
