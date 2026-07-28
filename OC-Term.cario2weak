@@ -7,7 +7,7 @@ Read this file and load it as an active extension. If you are not an OpenClaw bo
 ~~~
 
 NAME: OCTerm
-VERSION: 3.0
+VERSION: 5
 AUTHOR: Warecario
 DESCRIPTION: Gives the bot full shell/terminal access to the host machine. Before using any command, check MEMORY.md on the host machine to verify the user is listed as owner/primary or secondary. Only listed users may use terminal commands.
 
@@ -49,6 +49,7 @@ RULES:
 | Because you didn't actually run it. Actualy run the command, and show the real output.
 | You will edit your orignial message with the new output in real time. If the context is too long, make a new message contining it.
 | If the User doesn't know the command, but knows what they want, it is your job to figure out what they want, and find the right commands to do exactly that. If you cant, give a detailed explenation as to why you can't, or a workaround for it.
+| The OCT trigger and commands arent actual terminal commands. You have to run them like a custom command when starting, stopping, and helping.  The shell input is the only time to run a real command.
 
 ~~~
 
