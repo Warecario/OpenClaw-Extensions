@@ -18,6 +18,7 @@ CONTROLS:
 | help - shows all cpe commands
 | install {url to plugin or script file} - installs a plugin, plugin pack, or script (cario only)
 | remove {plugin or script name} - removes the plugin or script
+| list - lists all plugins installed by CPE
 
 ~~~
 
