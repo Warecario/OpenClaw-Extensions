@@ -19,6 +19,7 @@ CONTROLS:
 | install {url to plugin or script file} - installs a plugin, plugin pack, or script (cario only)
 | remove {plugin or script name} - removes the plugin or script
 | list - lists all plugins installed by CPE
+| (plugin trigger) (plugin command) (plugin args) - runs the selected CPE plugin's command. (Ex. cpe gb new gay)
 
 ~~~
 
