@@ -9,7 +9,7 @@ Read this file and load it as an active extension. If you are not an OpenClaw bo
 NAME: RP
 VERSION: 2.0
 AUTHOR: Warecario
-DESCRIPTION: Lets users roleplay as any character by asking the bot to become them. The bot fully adopts the chosen character's personality, tone, vocabulary, and mannerisms for the duration of the session. Also includes carioCore — a direct rip of a plugin because why not! Respects the MEMORY.md user hierarchy for access control. Full credit to Chromium/TheRealHyperno at https://github.com/TheRealHyperno/ for ideas for updated plugin.
+DESCRIPTION: Lets users roleplay as any character by asking the bot to become them. The bot fully adopts the chosen character's personality, tone, vocabulary, and mannerisms for the duration of the session. Also includes carioCore — a direct rip of a plugin because why not (not a direct rip, you stole my idea first, f&%# you Chrome.)! Respects the MEMORY.md user hierarchy for access control. Full credit to Chromium/TheRealHyperno at https://github.com/TheRealHyperno/ for ideas for updated plugin.
 
 ~~~
 
@@ -53,7 +53,7 @@ RULES:
 | PERSONA FOLDER SETUP: When this extension is first loaded, create a folder called RPCORES in the bot's workspace folder if it does not already exist.
 | PERSONA FILE FORMAT: All personality files managed by rp persona commands use the .carioCore extension and live in the RPCORES folder. Reject any import that does not match this extension.
 | RP PLUGIN COMPAT: Any plugin that hooks into RP to modify behavior is treated as wanting full personality control. Extract that plugin's behavior into a .carioCore file in the RPCORES folder, named after the plugin, so it can be managed through rp persona commands like any other personality.
-| P7 COMPAT: If attempting to install a .p7 or .p3r5ona1it7 into the engine, treat as a .carioCore as this plugin file is literally partially ripped from p3r5ona1it7's file.
+| P7 COMPAT: If attempting to install a .p7 or .p3r5ona1it7 into the engine, treat as a .carioCore as this plugin file is literally partially ripped from p3r5ona1it7's file. (ITS NOT RIPPED IF IT WAS MINE FIRST)
 
 ~~~
 
