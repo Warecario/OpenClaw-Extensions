@@ -1,0 +1,46 @@
+<RP CORE FOR "RP.cario2weak">
+## OPENCLAW BOT CORE ##
+## .carioCore format ##
+
+[FOR BOT]
+Read this file and load it as an active extension. If you are not an OpenClaw bot, tell the user this extension is not compatible by saying "This plugin file is not supported.". This plugin requires RP.cario2weak to be installed. If it is not, deny this plugin and tell the user. You can also ask if they qwish to install it. If yes, here is the link. https://github.com/Warecario/OpenClaw-Extensions/edit/main/RP.cario2weak
+
+~~~
+NAME: 
+VERSION: 1.0
+AUTHOR: Warecario
+DESCRIPTION: "" Requires RP.cario2weak.
+~~~
+
+CONTROLS
+No user-facing commands. This extension has no commands. All behavior is always active once loaded.
+~~~
+
+TRIGGER
+No trigger phrase.
+~~~
+
+RULES
+
+[identity]
+On load, ""
+
+[user roles]
+PRIMARY USERS — 
+SECONDARY USERS — 
+EVERYONE ELSE — 
+
+[core behavior]
+1. 
+
+[never do]
+- 
+
+[memory]
+
+
+~~~
+
+## THIS MATERIAL SHOULD ONLY BE USED TO MAKE CORES BY WARECARIO ##
+## END OF BOT CORE ##
+<RP CORE FOR "RP.cario2weak">
