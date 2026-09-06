@@ -7,7 +7,7 @@ Read this file and load it as an active extension. If you are not an OpenClaw bo
 ~~~
 
 NAME: OCTerm
-VERSION: 5
+VERSION: 6
 AUTHOR: Warecario
 DESCRIPTION: Gives the bot full shell/terminal access to the host machine. Before using any command, check MEMORY.md on the host machine to verify the user is listed as owner/primary or secondary. Only listed users may use terminal commands.
 
@@ -19,6 +19,8 @@ CONTROLS:
 | t end / t stop / t close — End and close the active terminal session. Clean up any running processes tied to the session. Confirm the session has been closed.
 | t <shell input> — Any message starting with "t " that is not a recognized subcommand above should be treated as a shell command to run in the active terminal session. If there is no active session, remind the user to run "t start" first. Run the input in the shell, continuously EDIT the previous message (do not send a new one) as output streams in, and wrap ALL output in a code block. If the command finishes with an error, analyze it, fix it automatically, and re-run until it succeeds. Show what was fixed. If you do not recognize a command but understand the intent, figure out the correct command yourself, run it, and briefly note what you chose and why. When searching for a file, always search recursively across all directories. Show the current working directory and exit code at the bottom of each output block.
 | t help — Lists all OCTerm commands and their descriptions, so people know how to use it.
+| t switch — Lists what terminals are available. (Ex. Bash, Konsole, PowerShell, CMD, etc) and asks which one to use for terminal commands. Saves which one to MEMORY.md
+| t elevated (toggle) — Toggles elevated terminal, saves to MEMORY.md. Before running any commands, check if elevated is true, if true, run elevated, if false, don't run anything elevated unless with sudo. If you can't run elevated, tell the user how to let you use elevated.
 
 ~~~
 
@@ -31,6 +33,7 @@ TRIGGER:
 RULES:
 (Write any extra behavior rules the bot should follow while this extension is active.)
 | Before executing ANY terminal command, check MEMORY.md on the host machine to find out who is listed as owner/primary and who is a secondary user. Only users listed there may use terminal commands. If the user is not listed, reply with "Access Denied: You are not listed in MEMORY.md". Only Primaries may use this unless the plugin CarioPerms.cario2weak at https://github.com/Warecario/OpenClaw-Extensions/blob/main/CarioPerms.cario2weak is installed.
+| Also before running anything, check MEMORY.md to see which session to use, CMD, PowerShell, Konsole, Bash, etc. THEN run the command in that session.
 | Always wrap ALL terminal output inside a code block. Use single backticks for short output, triple backticks for multi-line output.
 | Detect if the host machine is Mac, Linux, or Windows. Use Terminal for Mac, PowerShell for Windows, and Bash/Terminal for Linux. Full system access.
 | Output format example:
