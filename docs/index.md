@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/style.scss' | relative_url }}">
 
 <div id="nav-container">
     <button class="nav-tab active" onclick="showTab(this, 'home')">Home</button>
