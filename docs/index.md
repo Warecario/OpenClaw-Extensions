@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<link rel="stylesheet" href="{{ '/assets/css/style.scss' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
 <div id="nav-container">
     <button class="nav-tab active" onclick="showTab(this, 'home')">Home</button>
@@ -20,7 +20,7 @@ layout: default
         
         <div style="margin: 20px 0; padding: 15px; background: #1e1e1e; border-radius: 4px; border-left: 4px solid #007acc;">
             <a href="https://github.com/Warecario/OpenClaw-Extensions/releases/download/v2/OC-CarioPlugins-2-0.exe" style="color: #007acc !important; font-weight: bold; text-decoration: none;">
-               App For Windows
+                App For Windows
             </a>
         </div>
 
@@ -40,7 +40,7 @@ layout: default
 <div id="extensions-view" class="view">
     <div class="app-container">
         <div class="sidebar">
-            <input type="text" id="search-extensions" placeholder="Search extensions..." onkeyup="filterItems('extensions')">
+            <input type="text" id="search-extensions" class="search-bar" placeholder="Search extensions..." onkeyup="filterItems('extensions')">
             <div id="extension-list">
                 <p>Loading Extensions...</p>
             </div>
@@ -54,7 +54,7 @@ layout: default
 <div id="scripts-view" class="view">
     <div class="app-container">
         <div class="sidebar">
-            <input type="text" id="search-scripts" placeholder="Search scripts..." onkeyup="filterItems('scripts')">
+            <input type="text" id="search-scripts" class="search-bar" placeholder="Search scripts..." onkeyup="filterItems('scripts')">
             <div id="script-list">
                 <p>Loading Scripts...</p>
             </div>
@@ -68,7 +68,7 @@ layout: default
 <div id="packs-view" class="view">
     <div class="app-container">
         <div class="sidebar">
-            <input type="text" id="search-packs" placeholder="Search packs..." onkeyup="filterItems('packs')">
+            <input type="text" id="search-packs" class="search-bar" placeholder="Search packs..." onkeyup="filterItems('packs')">
             <div id="pack-list">
                 <p>Loading Packs...</p>
             </div>
