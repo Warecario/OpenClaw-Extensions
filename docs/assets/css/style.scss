@@ -13,7 +13,7 @@ body {
 h1, h2, h3, h4, p, li, pre { color: #e1e1e1 !important; }
 
 /* Navigation */
-#nav-container { margin-bottom: 20px; border-bottom: 1px solid #333; display: flex; }
+#nav-container { margin-bottom: 20px; border-bottom: 1px solid #333; display: flex; flex-wrap: wrap; }
 .nav-tab { background: none; border: none; color: #858585; padding: 10px 20px; cursor: pointer; font-size: 16px; font-weight: bold; }
 .nav-tab.active { color: #007acc; border-bottom: 2px solid #007acc; }
 
@@ -25,7 +25,7 @@ h1, h2, h3, h4, p, li, pre { color: #e1e1e1 !important; }
 
 .app-container { display: flex; height: 550px; gap: 15px; }
 .sidebar { width: 300px; background: #252526; border: 1px solid #333; display: flex; flex-direction: column; border-radius: 6px; }
-#search-bar { background: #1e1e1e; border: 1px solid #333; color: #fff; padding: 12px; margin: 10px; border-radius: 4px; }
+.search-bar { background: #1e1e1e; border: 1px solid #333; color: #fff; padding: 12px; margin: 10px; border-radius: 4px; }
 
 #extension-list { overflow-y: auto; flex-grow: 1; }
 .ext-item { width: 100%; text-align: left; background: none; border: none; color: #ccc; padding: 12px 15px; cursor: pointer; border-bottom: 1px solid #333; }
