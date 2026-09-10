@@ -10,6 +10,7 @@ layout: default
     <button class="nav-tab" onclick="showTab(this, 'scripts')">Scripts</button>
     <button class="nav-tab" onclick="showTab(this, 'packs')">Packs</button>
     <button class="nav-tab" onclick="showTab(this, 'license')">License</button>
+    <button class="nav-tab" onclick="showTab(this, 'docs')">Docs</button>
 </div>
 
 <div id="home-view" class="view active">
