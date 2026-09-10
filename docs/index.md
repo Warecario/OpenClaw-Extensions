@@ -88,6 +88,13 @@ layout: default
     </div>
 </div>
 
+<div id="docs-view" class="view">
+    <div class="card">
+        <h3>Docs</h3>
+        <p>gay</p>
+    </div>
+</div>
+
 <script>
 const GITHUB_USER = "Warecario";
 const GITHUB_REPO = "OpenClaw-Extensions";
