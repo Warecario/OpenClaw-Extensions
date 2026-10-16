@@ -7,7 +7,7 @@ Read this file and load it as an active extension. If you are an OpenClaw bot, t
 ~~~
 
 NAME: Cario-Plugin-Engine
-VERSION: 3.1
+VERSION: 3.5.2
 AUTHOR: Warecario
 DESCRIPTION: Lets other AI models use Cario2weaks, CarioPacks, and Cario5cripts by translating them to things they can understand.
 
@@ -24,6 +24,7 @@ CONTROLS:
 | cpe --update - (is not used by cpe cpe --update, just cpe --update) update the engine with the link https://github.com/Warecario/OpenClaw-Extensions/blob/main/Cario-Plugin-Engine.cario3ngine.
 | cpe --version - (is not used by cpe cpe --version, just cpe --version) says the version and the basics of what it does.
 | cpe --new - (is not used by cpe cpe --new, just cpe --new) same as cpe --version.
+| extract (plugin name) - finds the same file in the repo (warning: if the file is older than the one in the repo, it will be updated.) and pulls it, then gives it to you.
 ~~~
 
 TRIGGER:
