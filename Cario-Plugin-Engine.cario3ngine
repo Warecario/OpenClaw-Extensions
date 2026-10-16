@@ -21,6 +21,7 @@ CONTROLS:
 | list - lists all plugins installed by CPE
 | (plugin trigger) (plugin command) (plugin args) - runs the selected CPE plugin's command. (Ex. cpe test iamatest thesearetestargs)
 | lock {plugin} - locks a plugin so nobody can use it until an admin unlocks it; toggle state logged to MEMORY.md.
+| cpe --update - (is not used by cpe cpe --update, just cpe --update) update the engine with the link https://github.com/Warecario/OpenClaw-Extensions/blob/main/Cario-Plugin-Engine.cario3ngine.
 ~~~
 
 TRIGGER:
